@@ -1,23 +1,34 @@
-/vendor/
-node_modules/
-npm-debug.log
-yarn-error.log
+# Dependency directories
+/node_modules
 
-# Laravel 4 specific
-bootstrap/compiled.php
-app/storage/
+# Build output
+/build
+/dist
 
-# Laravel 5 & Lumen specific
-public/storage
-public/hot
+# Environment variables
+/.env
+/.env.local
+/.env.*.local
+!.env.example
 
-# Laravel 5 & Lumen specific with changed public path
-public_html/storage
-public_html/hot
+# Editor directories and files
+/.vscode
+/.idea
+*.iml
+*.ipr
+*.iws
 
-storage/*.key
-.env
-Homestead.yaml
-Homestead.json
-/.vagrant
-.phpunit.result.cache
+# Logs and debugging files
+/logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Miscellaneous
+.DS_Store
+*.log
+*.pid
+*.seed
+*.pid.lock
+.npmrc
+yarn.lock
