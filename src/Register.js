@@ -35,12 +35,28 @@ const Register = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
-    // You can perform further validation or registration logic here
-    console.log('Register Form Submitted!');
-    console.log('Email:', email);
-    console.log('Password:', password);
+    try {
+      const response = await fetch('http://localhost:8000/register', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email, password }),
+      });
+      const responseData = await response.json();
+      console.log(responseData.message);
+      if (response.ok) {
+        // Registration successful
+        console.log('Registration successful!');
+      } else {
+        // Registration failed
+        console.log('Registration failed!');
+      }
+    } catch (error) {
+      console.error('Error:', error);
+    }
   };
 
   return (
