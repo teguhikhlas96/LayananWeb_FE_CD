@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 const formStyle = {
   width: '400px',
@@ -34,6 +35,8 @@ const buttonStyle = {
 const Login = () => {
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
+  const navigate = useNavigate();
+
 
   const handleSubmit = async (event) => {
     event.preventDefault();
@@ -49,6 +52,10 @@ const Login = () => {
       if (response.ok) {
         // Login successful
         console.log('Login successful!');
+        const data = await response.json();
+        console.log(data);
+        localStorage.setItem('accessToken', data.token); // Menyimpan accessToken dalam localStorage
+        navigate('/user');
         // Perform further actions such as setting authentication state, storing tokens, etc.
       } else {
         // Login failed
